@@ -13,7 +13,7 @@
       --border: #e2e2df;
       --border-dark: #222222;
       --accent: #111111;
-      --callout: #f0f0ed;
+      --link: #0056b3;
     }
 
     * {
@@ -40,15 +40,6 @@
       border-bottom: 2px solid var(--border-dark);
       padding-bottom: 2rem;
       margin-bottom: 2.5rem;
-    }
-
-    .eyebrow {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
     }
 
     h1 {
@@ -136,7 +127,7 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .dossier h2 {
@@ -153,14 +144,10 @@
       margin-bottom: 1rem;
     }
 
-    .dossier p:last-child {
-      margin-bottom: 0;
-    }
-
     .dossier-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: 1.5rem;
       margin-top: 1.5rem;
       border-top: 1px solid var(--border);
       padding-top: 1.5rem;
@@ -173,14 +160,48 @@
     }
 
     .grid-item h3 {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.5rem;
     }
 
     .grid-item p {
-      font-size: 0.88rem;
-      color: var(--muted);
+      font-size: 0.9rem;
+      color: #444444;
+      line-height: 1.5;
+    }
+
+    /* Links Section */
+    .resources-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .resources-section h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .resources-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .resources-list li a {
+      color: var(--link);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .resources-list li a:hover {
+      text-decoration: none;
     }
 
     footer {
@@ -190,16 +211,24 @@
       color: var(--muted);
       line-height: 1.6;
     }
+
+    .disclaimer {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0, 0, 0, 0.03);
+      border-left: 3px solid var(--muted);
+      font-size: 0.78rem;
+      color: #555555;
+    }
   </style>
 </head>
 <body>
 
   <div class="wrapper">
     <header>
-      <div class="eyebrow">Fiscal Policy Demonstration</div>
       <h1>Australia’s Foregone Gas Revenue</h1>
       <p class="lead">
-        An estimate of public revenue foregone under the Petroleum Resource Rent Tax (PRRT) regime, benchmarked against a 25% gross export revenue tax as proposed by Senator David Pocock.
+        This represents an estimate of lost revenue under the Petroleum Resource Rent Tax (PRRT) regime. Benchmarked against a proposed 25% gross export revenue tax as proposed by Senator David Pocock, this is money that could have been collected by the Australian government if a modest tax was put in place for our own natural resources.
       </p>
     </header>
 
@@ -218,7 +247,7 @@
         <!-- 2. This Month -->
         <div class="counter-row">
           <div class="counter-meta">
-            <span class="counter-label">This Month (<span id="month-label"></span>)</span>
+            <span class="counter-label">This Month</span>
             <span class="counter-rate">~$50.6 million / day</span>
           </div>
           <div class="counter-figure" id="counter-month">$0</div>
@@ -228,7 +257,7 @@
         <!-- 3. This Year -->
         <div class="counter-row">
           <div class="counter-meta">
-            <span class="counter-label">This Year (<span id="year-label"></span>)</span>
+            <span class="counter-label">This Year</span>
             <span class="counter-rate">~$18.5 billion p.a. benchmark</span>
           </div>
           <div class="counter-figure" id="counter-year">$0</div>
@@ -239,60 +268,76 @@
         <div class="counter-row">
           <div class="counter-meta">
             <span class="counter-label">Since 2020</span>
-            <span class="counter-rate">5+ year resource windfall</span>
+            <span class="counter-rate">Resource windfall period</span>
           </div>
           <div class="counter-figure" id="counter-2020">$0</div>
-          <div class="counter-desc">Covers the post-2020 global energy price spike and LNG record-export phase.</div>
+          <div class="counter-desc">Covers the post-2020 global energy price spike and liquefied natural gas (LNG) record-export phase.</div>
         </div>
 
         <!-- 5. Since 2000 (Culmination) -->
         <div class="counter-row culmination">
           <div class="counter-meta">
             <span class="counter-label">Total Foregone (Since 2000)</span>
-            <span class="counter-rate">Full 21st-century LNG boom</span>
+            <span class="counter-rate">Full 21st-century liquefied natural gas boom</span>
           </div>
           <div class="counter-figure" id="counter-2000">$0</div>
           <div class="counter-desc">Cumulative revenue that could have seeded an Australian sovereign wealth fund.</div>
         </div>
       </div>
 
-      <!-- Matter-of-Fact Dossier Section -->
+      <!-- Explanatory Dossier Section -->
       <section class="dossier">
         <h2>Economic and Policy Context</h2>
         <p>
-          Australia is one of the world's largest exporters of liquefied natural gas (LNG). Despite shipping tens of billions of dollars worth of gas overseas annually, the Commonwealth consistently collects more tax revenue from the beer excise than from the Petroleum Resource Rent Tax (PRRT).
+          Australia is one of the world's largest exporters of liquefied natural gas (LNG). We are shipping tens of billions of dollars worth of gas overseas annually.
         </p>
         <p>
-          Generous carry-forward deductions, investment uplift rates, and structural transfer pricing rules allow multinational energy operators to export non-renewable Australian resources while reporting minimal taxable super-profits.
+          Multinational energy operators export non-renewable Australian resources while reporting minimal taxable super-profits and the Australian people are being screwed while private, faceless corporations are laughing all the way to the bank.
         </p>
 
         <div class="dossier-grid">
           <div class="grid-item">
-            <h3>Macroeconomic Balance</h3>
+            <h3>What This Means for Everyday Australians</h3>
             <p>
-              When governments rely predominantly on income tax rather than resource levies, the burden of cooling inflation falls almost exclusively on Reserve Bank interest rate rises, directly squeezing mortgage holders and renters.
+              The Reserve Bank of Australia is raising interest rates to try to recoup money from Australians and bring it back to the government. That means YOU are paying the difference instead of the multinational energy operators.
             </p>
           </div>
           <div class="grid-item">
-            <h3>International Contrast</h3>
+            <h3>How Do Other Countries Do It?</h3>
             <p>
-              Norway taxes offshore petroleum profits at an effective rate of 78%, which has funded a national sovereign wealth fund valued at over US$1.7 trillion. Australia has largely liquidated equivalent volumes of gas with minimal long-term public capital retained.
+              Norway taxes offshore petroleum profits at an effective rate of 78%. Instead of giving away their natural resources for virtually nothing, they saved that money into a national sovereign wealth fund now worth over US$1.7 trillion. Australia has shipped away comparable amounts of gas while everyday Australians are left holding the bill.
             </p>
           </div>
         </div>
+      </section>
+
+      <!-- Useful Resources -->
+      <section class="resources-section">
+        <h3>Useful Resources &amp; Campaigns</h3>
+        <ul class="resources-list">
+          <li>
+            <a href="https://www.davidpocock.com.au/" target="_blank" rel="noopener noreferrer">Senator David Pocock's Official Website</a> &mdash; Policy proposals, speeches, and Senate initiatives.
+          </li>
+          <li>
+            <a href="https://www.ourgas.com.au/" target="_blank" rel="noopener noreferrer">Our Gas Campaign</a> &mdash; Community campaign advocating for fair returns on Australian gas.
+          </li>
+        </ul>
       </section>
     </main>
 
     <footer>
       <p>
-        <strong>Methodology:</strong> Modelled on average annual LNG export values of ~A$74 billion across peak production periods, evaluating the net delta under a flat 25% export revenue levy as advocated by independent crossbencher Senator David Pocock. All values are rendered in Australian Dollars (AUD).
+        <strong>Methodology:</strong> Modelled on average annual liquefied natural gas (LNG) export values of ~A$74 billion across peak production periods, evaluating the net delta under a flat 25% export revenue levy as advocated by Senator David Pocock. All values are rendered in whole Australian Dollars (AUD).
       </p>
+      
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> This website is an independent community demonstration tool. The author and maintainer are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Senator David Pocock, Our Gas, the Australian Parliament, or any political party or campaign organization.
+      </div>
     </footer>
   </div>
 
   <script>
     // Rates & Baseline Calculations
-    // Modelled annualised delta: ~A$18.5 Billion/year
     const REVENUE_PER_YEAR = 18500000000;
     const SECONDS_PER_YEAR = 365.2425 * 86400;
     const REVENUE_PER_SECOND = REVENUE_PER_YEAR / SECONDS_PER_YEAR; // ~$586.20/sec
@@ -301,23 +346,13 @@
     const BASELINE_2000_TO_2020 = 72000000000;
     const BASELINE_2020_TO_2024 = 75000000000;
 
-    // Formatter: Australian Dollar, 0 decimal places
+    // Formatter: Australian Dollar, whole numbers (0 decimals)
     const formatter = new Intl.NumberFormat('en-AU', {
       style: 'currency',
       currency: 'AUD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     });
-
-    const monthNames = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    function updateLabels(date) {
-      document.getElementById('year-label').textContent = date.getFullYear();
-      document.getElementById('month-label').textContent = monthNames[date.getMonth()];
-    }
 
     function renderCounters() {
       const now = new Date();
@@ -341,7 +376,7 @@
       const revenueSince2020 = BASELINE_2020_TO_2024 + post2024Baseline + revenueYear;
       const revenueSince2000 = BASELINE_2000_TO_2020 + revenueSince2020;
 
-      // Update elements (Math.floor ensures whole dollar increments)
+      // Update elements with whole dollar amounts
       document.getElementById('counter-today').textContent = formatter.format(Math.floor(revenueToday));
       document.getElementById('counter-month').textContent = formatter.format(Math.floor(revenueMonth));
       document.getElementById('counter-year').textContent = formatter.format(Math.floor(revenueYear));
@@ -349,9 +384,7 @@
       document.getElementById('counter-2000').textContent = formatter.format(Math.floor(revenueSince2000));
     }
 
-    updateLabels(new Date());
     renderCounters();
-    // Update every 200ms so whole dollars advance steadily without visual chaos
     setInterval(renderCounters, 200);
   </script>
 </body>
