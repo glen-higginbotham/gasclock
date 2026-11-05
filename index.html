@@ -3,20 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Fair Share Gas Counter | Australia's Missing Billions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Australian Gas Revenue Estimate | 25% Export Benchmark</title>
   <style>
     :root {
-      --bg-dark: #090e17;
-      --card-bg: rgba(18, 26, 43, 0.85);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --accent-green: #00e599;
-      --accent-amber: #ffb830;
-      --accent-red: #ff4d6d;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --text: #171717;
+      --muted: #666664;
+      --border: #e2e2df;
+      --border-dark: #222222;
+      --accent: #111111;
+      --callout: #f0f0ed;
     }
 
     * {
@@ -26,283 +23,260 @@
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(0, 229, 153, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(255, 184, 48, 0.06) 0%, transparent 40%);
-      min-height: 100vh;
-      padding: 2rem 1rem;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      padding: 3rem 1.25rem;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 1180px;
+    .wrapper {
+      max-width: 760px;
       margin: 0 auto;
     }
 
     header {
-      text-align: center;
-      margin-bottom: 3.5rem;
+      border-bottom: 2px solid var(--border-dark);
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    .badge {
-      display: inline-block;
-      background: rgba(0, 229, 153, 0.12);
-      color: var(--accent-green);
-      border: 1px solid rgba(0, 229, 153, 0.3);
-      padding: 0.35rem 1rem;
-      border-radius: 999px;
+    .eyebrow {
       font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
     }
 
     h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 700;
+      line-height: 1.2;
       letter-spacing: -0.02em;
-      line-height: 1.15;
       margin-bottom: 1rem;
     }
 
-    h1 span {
-      background: linear-gradient(135deg, #00e599 0%, #ffb830 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 680px;
     }
 
-    .subtitle {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    /* Counters Grid */
-    .counters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+    /* Stacked Counters */
+    .counter-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
       margin-bottom: 3.5rem;
     }
 
-    .counter-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .counter-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0, 229, 153, 0.35);
-    }
-
-    .counter-card.featured {
-      grid-column: 1 / -1;
-      background: linear-gradient(145deg, rgba(20, 32, 54, 0.95), rgba(13, 20, 36, 0.95));
-      border: 1px solid rgba(0, 229, 153, 0.35);
-      text-align: center;
-      padding: 2.75rem 2rem;
-    }
-
-    .card-label {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
+    .counter-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem 1.75rem;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .counter-row.culmination {
+      border: 2px solid var(--border-dark);
+      background: #ffffff;
+      padding: 2rem 1.75rem;
+    }
+
+    .counter-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
       gap: 0.5rem;
     }
 
-    .featured .card-label {
-      justify-content: center;
-      font-size: 1rem;
-    }
-
-    .live-pulse {
-      width: 8px;
-      height: 8px;
-      background: var(--accent-green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-green);
-      animation: pulse 1.6s infinite;
-      display: inline-block;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.3; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.2); }
-      100% { opacity: 0.3; transform: scale(0.9); }
-    }
-
-    .counter-value {
-      font-family: 'Space Grotesk', monospace;
-      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+    .counter-label {
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--accent-green);
-      letter-spacing: -0.01em;
-      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
     }
 
-    .featured .counter-value {
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      color: #fff;
-      text-shadow: 0 0 25px rgba(0, 229, 153, 0.25);
+    .counter-rate {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
     }
 
-    .counter-footnote {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
+    .counter-figure {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
     }
 
-    /* Policy Context Section */
-    .content-section {
-      background: rgba(14, 21, 35, 0.7);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin-bottom: 3.5rem;
+    .culmination .counter-figure {
+      font-size: clamp(2.4rem, 6vw, 3.4rem);
     }
 
-    .content-section h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.8rem;
+    .counter-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Explanatory Context */
+    .dossier {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .dossier h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .dossier p {
+      font-size: 0.95rem;
+      color: #333333;
       margin-bottom: 1rem;
     }
 
-    .impact-grid {
+    .dossier p:last-child {
+      margin-bottom: 0;
+    }
+
+    .dossier-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1.75rem;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
     }
 
-    .impact-box {
-      background: rgba(255, 255, 255, 0.03);
-      border-left: 3px solid var(--accent-green);
-      padding: 1.25rem 1.5rem;
-      border-radius: 0 12px 12px 0;
+    @media (min-width: 600px) {
+      .dossier-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
-    .impact-box h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.4rem;
-      color: #fff;
-    }
-
-    .impact-box p {
+    .grid-item h3 {
       font-size: 0.95rem;
-      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .grid-item p {
+      font-size: 0.88rem;
+      color: var(--muted);
     }
 
     footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 2rem;
-    }
-
-    footer a {
-      color: var(--accent-green);
-      text-decoration: none;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="wrapper">
     <header>
-      <div class="badge">Policy Demonstration Counter</div>
-      <h1>Australia's <span>Missing Gas Billions</span></h1>
-      <p class="subtitle">
-        What could have been in the Australian public purse if multinational resource companies paid a genuine 25% tax on offshore gas export revenue, as advocated by Senator David Pocock.
+      <div class="eyebrow">Fiscal Policy Demonstration</div>
+      <h1>Australia’s Foregone Gas Revenue</h1>
+      <p class="lead">
+        An estimate of public revenue foregone under the Petroleum Resource Rent Tax (PRRT) regime, benchmarked against a 25% gross export revenue tax as proposed by Senator David Pocock.
       </p>
     </header>
 
     <main>
-      <div class="counters-grid">
-        <!-- Featured Counter: Since 2000 -->
-        <div class="counter-card featured">
-          <div class="card-label">
-            <span class="live-pulse"></span> Cumulative Foregone Revenue (Since 2000)
+      <div class="counter-stack">
+        <!-- 1. Today (Lowest / Starting Point) -->
+        <div class="counter-row">
+          <div class="counter-meta">
+            <span class="counter-label">Today</span>
+            <span class="counter-rate">Accruing ~$586 / sec</span>
           </div>
-          <div class="counter-value" id="counter-2000">$0.00</div>
-          <div class="counter-footnote">
-            Modelled across Australia's LNG export boom (~$180+ billion that could have built sovereign wealth).
+          <div class="counter-figure" id="counter-today">$0</div>
+          <div class="counter-desc">Accumulated since midnight (Australian Eastern Time).</div>
+        </div>
+
+        <!-- 2. This Month -->
+        <div class="counter-row">
+          <div class="counter-meta">
+            <span class="counter-label">This Month (<span id="month-label"></span>)</span>
+            <span class="counter-rate">~$50.6 million / day</span>
           </div>
+          <div class="counter-figure" id="counter-month">$0</div>
+          <div class="counter-desc">Calculated from the first day of the current calendar month.</div>
         </div>
 
-        <!-- Since 2020 -->
-        <div class="counter-card">
-          <div class="card-label">Since 2020</div>
-          <div class="counter-value" id="counter-2020">$0.00</div>
-          <div class="counter-footnote">During the peak global energy price spikes and windfall profits.</div>
+        <!-- 3. This Year -->
+        <div class="counter-row">
+          <div class="counter-meta">
+            <span class="counter-label">This Year (<span id="year-label"></span>)</span>
+            <span class="counter-rate">~$18.5 billion p.a. benchmark</span>
+          </div>
+          <div class="counter-figure" id="counter-year">$0</div>
+          <div class="counter-desc">Total estimated uncollected revenue for the current calendar year.</div>
         </div>
 
-        <!-- This Year -->
-        <div class="counter-card">
-          <div class="card-label">This Year (<span id="current-year-label"></span>)</div>
-          <div class="counter-value" id="counter-year">$0.00</div>
-          <div class="counter-footnote">Annualised missed revenue at ~A$18.5B per annum.</div>
+        <!-- 4. Since 2020 -->
+        <div class="counter-row">
+          <div class="counter-meta">
+            <span class="counter-label">Since 2020</span>
+            <span class="counter-rate">5+ year resource windfall</span>
+          </div>
+          <div class="counter-figure" id="counter-2020">$0</div>
+          <div class="counter-desc">Covers the post-2020 global energy price spike and LNG record-export phase.</div>
         </div>
 
-        <!-- This Month -->
-        <div class="counter-card">
-          <div class="card-label">This Month (<span id="current-month-label"></span>)</div>
-          <div class="counter-value" id="counter-month">$0.00</div>
-          <div class="counter-footnote">Accruing at approximately A$50.6 million each day.</div>
-        </div>
-
-        <!-- Today -->
-        <div class="counter-card">
-          <div class="card-label">Today (Since Midnight)</div>
-          <div class="counter-value" id="counter-today">$0.00</div>
-          <div class="counter-footnote">Ticking at ~A$586.60 every single second.</div>
+        <!-- 5. Since 2000 (Culmination) -->
+        <div class="counter-row culmination">
+          <div class="counter-meta">
+            <span class="counter-label">Total Foregone (Since 2000)</span>
+            <span class="counter-rate">Full 21st-century LNG boom</span>
+          </div>
+          <div class="counter-figure" id="counter-2000">$0</div>
+          <div class="counter-desc">Cumulative revenue that could have seeded an Australian sovereign wealth fund.</div>
         </div>
       </div>
 
-      <!-- Demonstration Context -->
-      <section class="content-section">
-        <h2>Why This Revenue Matters to Everyday Australians</h2>
+      <!-- Matter-of-Fact Dossier Section -->
+      <section class="dossier">
+        <h2>Economic and Policy Context</h2>
         <p>
-          Australia is one of the world's leading exporters of liquefied natural gas (LNG), yet the existing Petroleum Resource Rent Tax (PRRT) regime is notoriously full of deductions, uplift rates, and carry-forward credits. The Australian government consistently earns more revenue from the tax on beer than from offshore gas exports.
+          Australia is one of the world's largest exporters of liquefied natural gas (LNG). Despite shipping tens of billions of dollars worth of gas overseas annually, the Commonwealth consistently collects more tax revenue from the beer excise than from the Petroleum Resource Rent Tax (PRRT).
+        </p>
+        <p>
+          Generous carry-forward deductions, investment uplift rates, and structural transfer pricing rules allow multinational energy operators to export non-renewable Australian resources while reporting minimal taxable super-profits.
         </p>
 
-        <div class="impact-grid">
-          <div class="impact-box">
-            <h3>Taking Pressure Off Interest Rates</h3>
+        <div class="dossier-grid">
+          <div class="grid-item">
+            <h3>Macroeconomic Balance</h3>
             <p>
-              When governments lack corporate resource revenues, inflation is disproportionately fought through Reserve Bank cash rate increases. Every rate hike punishes mortgage holders and renters instead of super-profitable offshore corporations.
+              When governments rely predominantly on income tax rather than resource levies, the burden of cooling inflation falls almost exclusively on Reserve Bank interest rate rises, directly squeezing mortgage holders and renters.
             </p>
           </div>
-
-          <div class="impact-box">
-            <h3>Funding Vital Cost-of-Living Relief</h3>
+          <div class="grid-item">
+            <h3>International Contrast</h3>
             <p>
-              A 25% revenue tax would raise roughly A$18.5 billion annually. That is enough to universalise bulk-billing with Medicare, deliver significant childcare subsidies, and wipe student HECS indexation.
-            </p>
-          </div>
-
-          <div class="impact-box">
-            <h3>Protecting Our Sovereign Resources</h3>
-            <p>
-              Countries like Norway capture up to 78% of oil and gas earnings for their sovereign wealth fund. Senator David Pocock’s proposed 25% levy ensures that Australia's non-renewable national wealth directly benefits Australians before it is exported forever.
+              Norway taxes offshore petroleum profits at an effective rate of 78%, which has funded a national sovereign wealth fund valued at over US$1.7 trillion. Australia has largely liquidated equivalent volumes of gas with minimal long-term public capital retained.
             </p>
           </div>
         </div>
@@ -311,31 +285,28 @@
 
     <footer>
       <p>
-        Data projections modelled using ABS trade balances, Australia Institute research, and Senator David Pocock's proposed 25% LNG export revenue levy.
+        <strong>Methodology:</strong> Modelled on average annual LNG export values of ~A$74 billion across peak production periods, evaluating the net delta under a flat 25% export revenue levy as advocated by independent crossbencher Senator David Pocock. All values are rendered in Australian Dollars (AUD).
       </p>
     </footer>
   </div>
 
   <script>
-    // Rates & Baseline Assumptions:
-    // Annual LNG export value average: ~A$74 Billion.
-    // At a 25% levy = A$18.5 Billion/year.
+    // Rates & Baseline Calculations
+    // Modelled annualised delta: ~A$18.5 Billion/year
     const REVENUE_PER_YEAR = 18500000000;
     const SECONDS_PER_YEAR = 365.2425 * 86400;
-    const REVENUE_PER_SECOND = REVENUE_PER_YEAR / SECONDS_PER_YEAR; // ~A$586.20 per second
+    const REVENUE_PER_SECOND = REVENUE_PER_YEAR / SECONDS_PER_YEAR; // ~$586.20/sec
 
-    // Historical baselines up to 1 Jan 2024:
-    // Estimated foregone 25% revenue:
-    // 2000-2019: ~A$72 Billion
-    // 2020-2023 (War in Ukraine / gas windfall peak): ~A$75 Billion
-    const BASELINE_2000_TO_2020 = 72000000000; 
-    const BASELINE_2020_TO_2024 = 75000000000; 
+    // Historical estimates to Jan 1, 2024
+    const BASELINE_2000_TO_2020 = 72000000000;
+    const BASELINE_2020_TO_2024 = 75000000000;
 
+    // Formatter: Australian Dollar, 0 decimal places
     const formatter = new Intl.NumberFormat('en-AU', {
       style: 'currency',
       currency: 'AUD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
     });
 
     const monthNames = [
@@ -343,51 +314,45 @@
       "July", "August", "September", "October", "November", "December"
     ];
 
-    function updateLabels(now) {
-      document.getElementById('current-year-label').textContent = now.getFullYear();
-      document.getElementById('current-month-label').textContent = monthNames[now.getMonth()];
+    function updateLabels(date) {
+      document.getElementById('year-label').textContent = date.getFullYear();
+      document.getElementById('month-label').textContent = monthNames[date.getMonth()];
     }
 
-    function calculateCounters() {
+    function renderCounters() {
       const now = new Date();
 
-      // Timestamps
       const currentYear = now.getFullYear();
       const startOfYear = new Date(currentYear, 0, 1).getTime();
       const startOfMonth = new Date(currentYear, now.getMonth(), 1).getTime();
       const startOfDay = new Date(currentYear, now.getMonth(), now.getDate()).getTime();
 
-      const elapsedSecondsYear = (now.getTime() - startOfYear) / 1000;
-      const elapsedSecondsMonth = (now.getTime() - startOfMonth) / 1000;
-      const elapsedSecondsToday = (now.getTime() - startOfDay) / 1000;
+      const elapsedSecYear = (now.getTime() - startOfYear) / 1000;
+      const elapsedSecMonth = (now.getTime() - startOfMonth) / 1000;
+      const elapsedSecToday = (now.getTime() - startOfDay) / 1000;
 
-      // Current calculations
-      const revenueToday = elapsedSecondsToday * REVENUE_PER_SECOND;
-      const revenueMonth = elapsedSecondsMonth * REVENUE_PER_SECOND;
-      const revenueYear = elapsedSecondsYear * REVENUE_PER_SECOND;
+      const revenueToday = elapsedSecToday * REVENUE_PER_SECOND;
+      const revenueMonth = elapsedSecMonth * REVENUE_PER_SECOND;
+      const revenueYear = elapsedSecYear * REVENUE_PER_SECOND;
 
-      // Elapsed years since 2024 to current year
       const yearsSince2024 = Math.max(0, currentYear - 2024);
       const post2024Baseline = yearsSince2024 * REVENUE_PER_YEAR;
 
-      // Total Since 2020
       const revenueSince2020 = BASELINE_2020_TO_2024 + post2024Baseline + revenueYear;
-
-      // Total Since 2000
       const revenueSince2000 = BASELINE_2000_TO_2020 + revenueSince2020;
 
-      // Update DOM
-      document.getElementById('counter-today').textContent = formatter.format(revenueToday);
-      document.getElementById('counter-month').textContent = formatter.format(revenueMonth);
-      document.getElementById('counter-year').textContent = formatter.format(revenueYear);
-      document.getElementById('counter-2020').textContent = formatter.format(revenueSince2020);
-      document.getElementById('counter-2000').textContent = formatter.format(revenueSince2000);
+      // Update elements (Math.floor ensures whole dollar increments)
+      document.getElementById('counter-today').textContent = formatter.format(Math.floor(revenueToday));
+      document.getElementById('counter-month').textContent = formatter.format(Math.floor(revenueMonth));
+      document.getElementById('counter-year').textContent = formatter.format(Math.floor(revenueYear));
+      document.getElementById('counter-2020').textContent = formatter.format(Math.floor(revenueSince2020));
+      document.getElementById('counter-2000').textContent = formatter.format(Math.floor(revenueSince2000));
     }
 
-    // Initialise and refresh at high frequency (approx 50ms) for smooth rolling cent increments
     updateLabels(new Date());
-    setInterval(calculateCounters, 50);
-    calculateCounters();
+    renderCounters();
+    // Update every 200ms so whole dollars advance steadily without visual chaos
+    setInterval(renderCounters, 200);
   </script>
 </body>
 </html>
